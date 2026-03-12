@@ -35,6 +35,19 @@ In Greek mythology, the Chimera was a fearsome hybrid creature — part lion, pa
 
 ## Quick Start
 
+Install dependencies (if not using as a module):
+```bash
+npm install
+```
+
+Set up your API keys:
+```bash
+export ANTHROPIC_API_KEY="your-key"
+export OPENAI_API_KEY="your-key"
+export GOOGLE_API_KEY="your-key"
+```
+
+Use Chimera in your code:
 ```js
 import Chimera from 'chimera';
 
@@ -171,6 +184,129 @@ chimera.registerProvider(
 );
 ```
 
+## Examples
+
+Chimera includes comprehensive examples to help you get started:
+
+### Multi-Provider Setup
+`examples/multi-provider.mjs` — Learn how to configure multiple providers and see routing decisions in action:
+- Set up Claude, GPT, and Gemini providers
+- Compare quality-first, cost-first, and balanced routing strategies
+- View which provider was selected and why
+- Monitor provider health status and circuit states
+
+### Failover Demo
+`examples/failover-demo.mjs` — See automatic failover in action:
+- Simulate provider failures with misconfigured API keys
+- Watch Chimera automatically retry and failover to backup providers
+- Track circuit breaker states and failure thresholds
+- Observe retry delays with exponential backoff
+
+### Cost-Based Routing
+`examples/cost-route.mjs` — Optimize costs with intelligent routing:
+- Compare cost differences between providers
+- Send prompts of varying complexity and see routing decisions
+- Compare cost vs quality trade-offs
+- View detailed cost breakdowns per provider
+
+Run any example:
+```bash
+node examples/multi-provider.mjs
+node examples/failover-demo.mjs
+node examples/cost-route.mjs
+```
+
+## Health Dashboard
+
+Chimera includes a comprehensive health monitoring system that tracks provider performance over time:
+
+```js
+const chimera = new Chimera({ apiKeys: { /* ... */ } });
+
+// Get current health status for all providers
+const dashboard = chimera.healthDashboard;
+const status = dashboard.getStatus();
+
+console.log(dashboard.toText());
+// Output:
+// === Provider Health Dashboard ===
+//
+// ✓ Anthropic (anthropic)
+//   Status: healthy
+//   Uptime: 100.00%
+//   Error Rate: 0.00%
+//   Latency: 450ms avg (p50: 420ms, p95: 580ms, p99: 650ms)
+//   Circuit: closed
+//   Requests: 25 (25 success, 0 failure)
+//
+// ~ OpenAI (openai)
+//   Status: degraded
+//   Uptime: 85.00%
+//   Error Rate: 15.00%
+//   ...
+
+// Record snapshots for historical tracking (call periodically)
+dashboard.recordSnapshot();
+
+// Get historical data for a provider
+const history = dashboard.getHistory('anthropic', 50); // Last 50 points
+
+// Get aggregate statistics
+const aggregateStats = dashboard.getAggregateStats();
+console.log(`Overall uptime: ${aggregateStats.overallUptime}%`);
+console.log(`Healthy providers: ${aggregateStats.healthyProviders}/${aggregateStats.totalProviders}`);
+```
+
+**Status Indicators:**
+- `✓` healthy — Provider is operating normally
+- `~` degraded — Provider is experiencing issues but still available
+- `✗` down/unhealthy — Provider is unavailable or circuit is open
+- `○` disabled — Provider is disabled
+
+## Request Logging
+
+Chimera automatically logs all requests and responses with detailed metrics:
+
+```js
+const chimera = new Chimera({
+  apiKeys: { /* ... */ },
+  logging: {
+    logPath: '~/.chimera/logs/requests.jsonl', // Custom path (optional)
+    enabled: true, // Default: true
+  },
+});
+
+// Logging happens automatically on every request
+await chimera.ask('Hello, world!');
+
+// Get recent logs from memory
+const logger = chimera.requestLogger;
+const recentLogs = logger.getRecentLogs(10); // Last 10 requests
+
+// Get aggregate statistics
+const stats = logger.getStats();
+console.log(`Total requests: ${stats.totalRequests}`);
+console.log(`Average latency: ${stats.avgLatency}ms`);
+console.log(`Total cost: $${stats.totalCost}`);
+console.log(`Error rate: ${stats.errorRate}%`);
+
+// Per-provider breakdown
+for (const [provider, providerStats] of Object.entries(stats.byProvider)) {
+  console.log(`${provider}: ${providerStats.requests} requests, $${providerStats.totalCost} cost`);
+}
+
+// Format as human-readable text
+console.log(logger.formatStats());
+
+// Clear logs
+logger.clear();
+```
+
+**Log Format:** Each request is logged as a single line of JSON (JSONL format):
+```json
+{"timestamp":1234567890,"provider":"anthropic","model":"claude-sonnet-4-6","prompt":"Explain quantum...","latencyMs":450,"status":"success","usage":{"inputTokens":12,"outputTokens":156,"totalTokens":168},"cost":0.000234}
+```
+
 ## CLI
 
 ```bash
@@ -198,7 +334,13 @@ chimera/
 │   ├── response-normalizer.mjs  # Response normalization
 │   ├── router.mjs               # Intelligent routing
 │   ├── failover.mjs             # Retry & circuit breaker
+│   ├── health-dashboard.mjs     # Provider health monitoring
+│   ├── request-logger.mjs       # Request/response logging
 │   └── unified-api.mjs          # Main Chimera class
+├── examples/
+│   ├── multi-provider.mjs       # Multi-provider setup demo
+│   ├── failover-demo.mjs        # Failover demonstration
+│   └── cost-route.mjs           # Cost-based routing example
 ├── test/
 │   ├── provider-registry.test.mjs
 │   ├── request-adapter.test.mjs
