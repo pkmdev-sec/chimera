@@ -1,0 +1,62 @@
+<svg width="1500" height="500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1500" height="500" fill="#000000"/>
+
+  <!-- Definitions for gradients -->
+  <defs>
+    <linearGradient id="circleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f43f5e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#14b8a6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f43f5e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#14b8a6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="badgeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f43f5e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#14b8a6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Left side: Circular container with DNA helix -->
+  <circle cx="250" cy="250" r="120" fill="none" stroke="url(#circleGradient)" stroke-width="4"/>
+
+  <!-- DNA Double Helix - Left strand -->
+  <path d="M 200 150 Q 220 180, 200 210 Q 180 240, 200 270 Q 220 300, 200 330 Q 180 360, 200 390"
+        fill="none" stroke="#f43f5e" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- DNA Double Helix - Right strand -->
+  <path d="M 300 150 Q 280 180, 300 210 Q 320 240, 300 270 Q 280 300, 300 330 Q 320 360, 300 390"
+        fill="none" stroke="#14b8a6" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- DNA connecting bars -->
+  <line x1="200" y1="170" x2="300" y2="170" stroke="#9ca3af" stroke-width="3"/>
+  <line x1="200" y1="210" x2="300" y2="210" stroke="#9ca3af" stroke-width="3"/>
+  <line x1="200" y1="250" x2="300" y2="250" stroke="#9ca3af" stroke-width="3"/>
+  <line x1="200" y1="290" x2="300" y2="290" stroke="#9ca3af" stroke-width="3"/>
+  <line x1="200" y1="330" x2="300" y2="330" stroke="#9ca3af" stroke-width="3"/>
+  <line x1="200" y1="370" x2="300" y2="370" stroke="#9ca3af" stroke-width="3"/>
+
+  <!-- Right side: Title text -->
+  <text x="550" y="220" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="800" fill="url(#textGradient)">
+    CHIMERA
+  </text>
+
+  <!-- Subtitle -->
+  <text x="550" y="270" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600"
+        fill="#9ca3af" letter-spacing="4">
+    CROSS-PROVIDER INTELLIGENCE
+  </text>
+
+  <!-- Tagline -->
+  <text x="550" y="310" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="400" fill="#6b7280">
+    One API. Every provider. Automatic failover.
+  </text>
+
+  <!-- Version badge (pill shape) -->
+  <rect x="1320" y="400" width="120" height="40" rx="20" ry="20" fill="url(#badgeGradient)"/>
+  <text x="1380" y="427" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700"
+        fill="#ffffff" text-anchor="middle">
+    v1.0
+  </text>
+</svg>

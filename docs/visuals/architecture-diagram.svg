@@ -1,0 +1,116 @@
+<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#000000"/>
+
+  <!-- Definitions for gradients and markers -->
+  <defs>
+    <linearGradient id="roseGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f43f5e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f43f5e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="tealGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#14b8a6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#14b8a6;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Arrow markers -->
+    <marker id="arrowRose" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#f43f5e" />
+    </marker>
+    <marker id="arrowTeal" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#14b8a6" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="600" y="50" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="#e5e7eb" text-anchor="middle">
+    CHIMERA Architecture
+  </text>
+
+  <!-- Top: Unified API Entry Point -->
+  <rect x="450" y="100" width="300" height="70" rx="10" fill="#1a1a2e" stroke="#f43f5e" stroke-width="3"/>
+  <text x="600" y="140" font-family="system-ui, sans-serif" font-size="20" font-weight="600" fill="#e5e7eb" text-anchor="middle">
+    Chimera Unified API
+  </text>
+
+  <!-- Arrow to Router -->
+  <line x1="600" y1="170" x2="600" y2="220" stroke="#f43f5e" stroke-width="3" marker-end="url(#arrowRose)"/>
+
+  <!-- Router -->
+  <rect x="450" y="220" width="300" height="70" rx="10" fill="#1a1a2e" stroke="#14b8a6" stroke-width="3"/>
+  <text x="600" y="260" font-family="system-ui, sans-serif" font-size="20" font-weight="600" fill="#e5e7eb" text-anchor="middle">
+    Router
+  </text>
+
+  <!-- Arrow to Failover -->
+  <line x1="600" y1="290" x2="600" y2="340" stroke="#14b8a6" stroke-width="3" marker-end="url(#arrowTeal)"/>
+
+  <!-- Failover -->
+  <rect x="450" y="340" width="300" height="70" rx="10" fill="#1a1a2e" stroke="#f43f5e" stroke-width="3"/>
+  <text x="600" y="380" font-family="system-ui, sans-serif" font-size="20" font-weight="600" fill="#e5e7eb" text-anchor="middle">
+    Failover Manager
+  </text>
+
+  <!-- Arrows to Request Adapter and Response Normalizer -->
+  <line x1="500" y1="410" x2="300" y2="480" stroke="#f43f5e" stroke-width="3" marker-end="url(#arrowRose)"/>
+  <line x1="700" y1="410" x2="900" y2="480" stroke="#14b8a6" stroke-width="3" marker-end="url(#arrowTeal)"/>
+
+  <!-- Request Adapter -->
+  <rect x="100" y="480" width="250" height="70" rx="10" fill="#1a1a2e" stroke="#14b8a6" stroke-width="3"/>
+  <text x="225" y="520" font-family="system-ui, sans-serif" font-size="18" font-weight="600" fill="#e5e7eb" text-anchor="middle">
+    Request Adapter
+  </text>
+
+  <!-- Response Normalizer -->
+  <rect x="850" y="480" width="250" height="70" rx="10" fill="#1a1a2e" stroke="#f43f5e" stroke-width="3"/>
+  <text x="975" y="520" font-family="system-ui, sans-serif" font-size="18" font-weight="600" fill="#e5e7eb" text-anchor="middle">
+    Response Normalizer
+  </text>
+
+  <!-- Provider Registry (side) -->
+  <rect x="50" y="220" width="250" height="70" rx="10" fill="#1a1a2e" stroke="#f43f5e" stroke-width="3"/>
+  <text x="175" y="260" font-family="system-ui, sans-serif" font-size="18" font-weight="600" fill="#e5e7eb" text-anchor="middle">
+    Provider Registry
+  </text>
+
+  <!-- Arrow from Provider Registry to Router -->
+  <line x1="300" y1="255" x2="450" y2="255" stroke="#14b8a6" stroke-width="3" marker-end="url(#arrowTeal)"/>
+
+  <!-- Providers at bottom -->
+  <!-- Anthropic (Claude) -->
+  <rect x="150" y="650" width="200" height="70" rx="10" fill="#1a1a2e" stroke="#14b8a6" stroke-width="3"/>
+  <text x="250" y="690" font-family="system-ui, sans-serif" font-size="18" font-weight="600" fill="#e5e7eb" text-anchor="middle">
+    Anthropic
+  </text>
+  <text x="250" y="710" font-family="system-ui, sans-serif" font-size="14" font-weight="400" fill="#9ca3af" text-anchor="middle">
+    (Claude)
+  </text>
+
+  <!-- OpenAI (GPT-4o) -->
+  <rect x="500" y="650" width="200" height="70" rx="10" fill="#1a1a2e" stroke="#f43f5e" stroke-width="3"/>
+  <text x="600" y="690" font-family="system-ui, sans-serif" font-size="18" font-weight="600" fill="#e5e7eb" text-anchor="middle">
+    OpenAI
+  </text>
+  <text x="600" y="710" font-family="system-ui, sans-serif" font-size="14" font-weight="400" fill="#9ca3af" text-anchor="middle">
+    (GPT-4o)
+  </text>
+
+  <!-- Google (Gemini) -->
+  <rect x="850" y="650" width="200" height="70" rx="10" fill="#1a1a2e" stroke="#14b8a6" stroke-width="3"/>
+  <text x="950" y="690" font-family="system-ui, sans-serif" font-size="18" font-weight="600" fill="#e5e7eb" text-anchor="middle">
+    Google
+  </text>
+  <text x="950" y="710" font-family="system-ui, sans-serif" font-size="14" font-weight="400" fill="#9ca3af" text-anchor="middle">
+    (Gemini)
+  </text>
+
+  <!-- Arrows from Request Adapter to Providers -->
+  <line x1="225" y1="550" x2="250" y2="650" stroke="#f43f5e" stroke-width="3" marker-end="url(#arrowRose)"/>
+  <line x1="225" y1="550" x2="600" y2="650" stroke="#14b8a6" stroke-width="3" marker-end="url(#arrowTeal)"/>
+  <line x1="225" y1="550" x2="950" y2="650" stroke="#f43f5e" stroke-width="3" marker-end="url(#arrowRose)"/>
+
+  <!-- Arrows from Providers to Response Normalizer -->
+  <line x1="250" y1="650" x2="975" y2="550" stroke="#14b8a6" stroke-width="3" marker-end="url(#arrowTeal)"/>
+  <line x1="600" y1="650" x2="975" y2="550" stroke="#f43f5e" stroke-width="3" marker-end="url(#arrowRose)"/>
+  <line x1="950" y1="650" x2="975" y2="550" stroke="#14b8a6" stroke-width="3" marker-end="url(#arrowTeal)"/>
+</svg>

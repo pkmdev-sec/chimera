@@ -1,15 +1,8 @@
-```
- ██████╗██╗  ██╗██╗███╗   ███╗███████╗██████╗  █████╗
-██╔════╝██║  ██║██║████╗ ████║██╔════╝██╔══██╗██╔══██╗
-██║     ███████║██║██╔████╔██║█████╗  ██████╔╝███████║
-██║     ██╔══██║██║██║╚██╔╝██║██╔══╝  ██╔══██╗██╔══██║
-╚██████╗██║  ██║██║██║ ╚═╝ ██║███████╗██║  ██║██║  ██║
- ╚═════╝╚═╝  ╚═╝╚═╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝
-```
+![Chimera Banner](assets/banner.svg)
 
 <div align="center">
 
-**🧬 CROSS-PROVIDER INTELLIGENCE 🐉**
+**CROSS-PROVIDER INTELLIGENCE**
 
 *One API. Every provider. Automatic failover.*
 
@@ -25,7 +18,9 @@
 
 **Chimera** is a cross-provider AI intelligence layer. Write your code once and seamlessly route requests across Anthropic (Claude), OpenAI (GPT-4o), and Google (Gemini) — with intelligent routing, automatic failover, and normalized responses.
 
-Like its mythological namesake — the multi-headed creature — Chimera combines the strengths of multiple AI providers into a single, unified interface.
+## Why Chimera?
+
+In Greek mythology, the Chimera was a fearsome hybrid creature — part lion, part goat, part serpent — combining the most powerful traits of different beasts into one being. CHIMERA embodies this principle of cross-provider fusion: it combines Anthropic's reasoning depth, OpenAI's versatility, and Google's speed into a single unified interface. Like the mythological creature that was greater than the sum of its parts, CHIMERA's intelligent routing and automatic failover create a system more resilient and capable than any single provider alone.
 
 ## Features
 
@@ -191,22 +186,7 @@ chimera ask "What is the meaning of life?"
 
 ## Architecture
 
-```
-┌───────────────────────────────────────────────────┐
-│                  Chimera Unified API               │
-│                                                    │
-│  Router ──► Failover ──► Adapter ──► Normalizer   │
-│       ╲         │           │            ╱         │
-│        ╲        │           │           ╱          │
-│         ╲       ▼           ▼          ╱           │
-│          ╲  ┌──────────────────────┐  ╱            │
-│           ╲ │  Provider Registry   │ ╱             │
-│            ╲└──┬────────┬────────┬┘╱              │
-│              ▼        ▼        ▼                  │
-│          Anthropic  OpenAI   Google               │
-│           Claude    GPT-4o   Gemini               │
-└───────────────────────────────────────────────────┘
-```
+![Architecture](docs/visuals/architecture-diagram.svg)
 
 ## Project Structure
 
