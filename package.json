@@ -1,0 +1,40 @@
+{
+  "name": "chimera",
+  "version": "1.0.0",
+  "description": "CHIMERA — Cross-Provider Intelligence. Unified API for multiple AI providers with smart routing, failover, and response normalization.",
+  "type": "module",
+  "main": "lib/unified-api.mjs",
+  "exports": {
+    ".": "./lib/unified-api.mjs",
+    "./registry": "./lib/provider-registry.mjs",
+    "./adapter": "./lib/request-adapter.mjs",
+    "./normalizer": "./lib/response-normalizer.mjs",
+    "./router": "./lib/router.mjs",
+    "./failover": "./lib/failover.mjs"
+  },
+  "bin": {
+    "chimera": "./bin/cli.mjs"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "start": "node bin/cli.mjs",
+    "lint": "echo 'No linter configured'"
+  },
+  "keywords": [
+    "ai",
+    "llm",
+    "multi-provider",
+    "anthropic",
+    "openai",
+    "google",
+    "gemini",
+    "unified-api",
+    "failover",
+    "routing"
+  ],
+  "author": "pkmdev-sec",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
